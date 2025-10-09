@@ -267,12 +267,11 @@ interface EncryptionKeyEntry {
 
 ## Dependencies
 
-- **viem** - Ethereum interaction
-- **@cloudflare/voprf-ts** - VOPRF protocol implementation
-- **@openzeppelin/merkle-tree** - Merkle tree utilities
-- **@fileverse/crypto** - Encryption primitives
-- **is-ipfs** - IPFS CID validation
-- **js-base64** - Base64 encoding
+- **[viem](https://github.com/wevm/viem)** - Ethereum interaction
+- **[@cloudflare/voprf-ts](https://github.com/cloudflare/voprf-ts)** - VOPRF protocol implementation
+- **[@openzeppelin/merkle-tree](https://github.com/OpenZeppelin/merkle-tree)** - Merkle tree utilities
+- **[@fileverse/crypto](https://github.com/fileverse/fileverse-cryptography)** - Encryption primitives
+- **[js-base64](https://github.com/dankogai/js-base64)** - Base64 encoding
 
 ## Development
 
