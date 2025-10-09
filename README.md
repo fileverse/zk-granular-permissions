@@ -1,31 +1,33 @@
 # @fileverse/granular-permissions
 
-A TypeScript library for cryptographically secure, blockchain-based permission management for files. Combines smart contracts, Merkle trees, VOPRF (Verifiable Oblivious Pseudorandom Function), and multi-layer encryption to provide privacy-preserving access control.
+A TypeScript library for cryptographically secure, blockchain-based permission management for multimedia files, documents, and spreadsheets. Combines smart contracts, Merkle trees, vOPRF (Verifiable Oblivious Pseudorandom Functions), and multi-layer encryption to provide privacy-preserving access control.
+
+Fileverse has been successfully audited by team Dédalo and Nethermind Security. All audits will be added here next week.
 
 ## Features
 
 - **Privacy-Preserving Permissions** - VOPRF protocol ensures servers cannot learn user identities
 - **Granular Access Control** - Six permission types from public view to private edit
-- **Multi-Identity Support** - Grant permissions via email, wallet address, or ENS
-- **Blockchain-Based** - Immutable permission records on Ethereum-compatible chains
+- **Multi-Identity Support** - Grant permissions to any email address, wallet address, and/or ENS domain, a decentralized domain name system built on the Ethereum blockchain.
+- **Blockchain-Based** - Immutable permission records on Ethereum Virtual Machine (EVMs) compatible blockchains, a decentralized computation engine that executes smart contracts on the Ethereum network.
 - **Merkle Tree Proofs** - Efficient membership verification without revealing full permission lists
-- **Multi-Layer Encryption** - Separate encryption for file keys, agent keys, and comment keys
+- **Multi-Layer Encryption** - Separate end-to-end encryption for file keys, agent keys, and comment keys
 
 ## Installation
 
-```bash
+```plaintext
 npm install @fileverse/granular-permissions
 ```
 
 ### Peer Dependencies
 
-```bash
+```plaintext
 npm install viem
 ```
 
 ## Permission Types
 
-The system supports six permission levels:
+The system supports six access permission levels:
 
 - **PublicView** - Anyone can view the file
 - **PublicComment** - Anyone can comment on the file
@@ -38,7 +40,7 @@ The system supports six permission levels:
 
 ### Initialize the Permission Manager
 
-```typescript
+```plaintext
 import {
   GranularPermissions,
   VOPRFManager,
@@ -74,7 +76,7 @@ const gp = new GranularPermissions(
 
 ### Set File Permissions
 
-```typescript
+```plaintext
 import { PermissionType } from "@fileverse/granular-permissions";
 
 const permissionMap = {
@@ -109,7 +111,7 @@ const { contractAddress, callData, permissionHash } =
 
 ### Retrieve Permissions
 
-```typescript
+```plaintext
 const permissionContent = await gp.getPermissionContent(fileId);
 
 const { permissionMap } = await gp.getOwnerPermissionSet(
@@ -166,11 +168,11 @@ The library interfaces with a FileversePermission smart contract providing:
 
 #### Constructor
 
-```typescript
+```plaintext
 new GranularPermissions(
   publicClient: PublicClient,
-  uploadFn: (data: unknown) => Promise<string>,
-  fetchFn: (hash: string) => Promise<unknown>,
+  uploadFn: (data: unknown) => Promise,
+  fetchFn: (hash: string) => Promise,
   voprfManager: VOPRFManager,
   contractAddress: Hex
 )
@@ -191,7 +193,7 @@ Retrieves the owner's permission map for a file.
 - `fileId: number` - The file identifier
 - `decryptionCallback: (data: string) => Uint8Array` - Decryption function
 
-**Returns:** `Promise<{ permissionMap: Record<string, PermissionMapItem> }>`
+**Returns:** `Promise<{ permissionMap: Record }>`
 
 ##### `preparePermissionContractCallData(args)`
 
@@ -211,13 +213,13 @@ Fetches permission content from IPFS.
 
 - `fileId: number` - The file identifier
 
-**Returns:** `Promise<PublicPermissionContent>`
+**Returns:** `Promise`
 
 ### VOPRFManager
 
 #### Constructor
 
-```typescript
+```plaintext
 new VOPRFManager(
   suite: SuiteID,
   publicKey: string,
@@ -235,13 +237,13 @@ Processes input through VOPRF protocol.
 
 - `inputBytes: Uint8Array` - Input to process
 
-**Returns:** `Promise<Uint8Array>` - VOPRF output for key derivation
+**Returns:** `Promise` - VOPRF output for key derivation
 
 ## Types
 
 ### PermissionMapItem
 
-```typescript
+```plaintext
 interface PermissionMapItem {
   type: "email" | "wallet" | "ens";
   value: string;
@@ -254,7 +256,7 @@ interface PermissionMapItem {
 
 ### EncryptionKeyEntry
 
-```typescript
+```plaintext
 interface EncryptionKeyEntry {
   encryptedFileKey: string;
   salt: string;
@@ -276,25 +278,29 @@ interface EncryptionKeyEntry {
 
 ### Build
 
-```bash
+```plaintext
 npm run build
 ```
 
 ### Production Build
 
-```bash
+```plaintext
 npm run build:prod
 ```
 
 ### Development Mode
 
-```bash
+```plaintext
 npm run dev
 ```
 
 ## Acknowledgments
 
 This work is inspired from VOPRF work on zkemail + semaphore protocol.
+
+This work is inspired from the great vOPRF R&D done by the Privacy Stewards of Ethereum on the [semaphore](https://github.com/semaphore-protocol) protocol and [zkemail](https://github.com/zkemail). Team Fileverse will be collaborating more actively with the [PSE](https://github.com/privacy-ethereum) team on leveraging their advanced work on TLSNotary and more <3
+
+There is no real online collaboration without privacy. There can't be real privacy for online collaboration without zero-knowledge proofs. The Internet is the new home of our Minds. It's where we discover, produce and share information. It's where we meet and coordinate freely with others. Being unrestrained in our ability to access information and people is essential to our freedom and to global understanding and collaboration. Privacy is a cornerstone of Fileverse and all our collaboration apps and middleware. This is why we support [Privacy](https://vitalik.eth.limo/general/2025/04/14/privacy.html).
 
 ## License
 
