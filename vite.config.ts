@@ -16,7 +16,7 @@ export default defineConfig({
           "src/granular-permissions/index.ts"
         ),
       },
-      name: "@fileverse/granular-permissions",
+      name: "@fileverse/zk-granular-permissions",
       formats: ["es", "cjs"],
     },
 

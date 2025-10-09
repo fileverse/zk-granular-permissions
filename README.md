@@ -1,4 +1,4 @@
-# @fileverse/granular-permissions
+# @fileverse/zk-granular-permissions
 
 A TypeScript library for cryptographically secure, blockchain-based permission management for multimedia files, documents, and spreadsheets. Combines smart contracts, Merkle trees, vOPRF (Verifiable Oblivious Pseudorandom Functions), and multi-layer encryption to provide privacy-preserving access control.
 
@@ -16,7 +16,7 @@ Fileverse has been successfully audited by team Dédalo and Nethermind Security.
 ## Installation
 
 ```plaintext
-npm install @fileverse/granular-permissions
+npm install @fileverse/zk-granular-permissions
 ```
 
 ### Peer Dependencies
@@ -44,7 +44,7 @@ The system supports six access permission levels:
 import {
   GranularPermissions,
   VOPRFManager,
-} from "@fileverse/granular-permissions";
+} from "@fileverse/zk-granular-permissions";
 import { createPublicClient, http } from "viem";
 import { mainnet } from "viem/chains";
 
@@ -77,7 +77,7 @@ const gp = new GranularPermissions(
 ### Set File Permissions
 
 ```plaintext
-import { PermissionType } from "@fileverse/granular-permissions";
+import { PermissionType } from "@fileverse/zk-granular-permissions";
 
 const permissionMap = {
   "user@example.com": {
