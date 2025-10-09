@@ -1,0 +1,49 @@
+{
+  "name": "@fileverse/granular-permissions",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dev": "vite",
+    "build": "npm run clean && vite build",
+    "build:prod": "npm run clean && NODE_ENV=production vite build && find dist -name \"*.map\" -delete",
+    "prepare": "npm run build:prod",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@vitest/ui": "^3.1.2",
+    "terser": "^5.28.1",
+    "typescript": "^5.8.3",
+    "viem": "^2.21.36",
+    "vite": "^6.3.3",
+    "vite-plugin-dts": "^4.5.3",
+    "vitest": "^3.1.2"
+  },
+  "author": "",
+  "license": "GNU GPL",
+  "dependencies": {
+    "@cloudflare/voprf-ts": "^1.0.0",
+    "@fileverse/crypto": "^0.0.16",
+    "@openzeppelin/merkle-tree": "^1.0.8",
+    "is-ipfs": "^8.0.4",
+    "js-base64": "^3.7.8"
+  },
+  "peerDependencies": {
+    "viem": "^2.21.36"
+  }
+}
