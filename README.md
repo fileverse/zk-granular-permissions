@@ -296,8 +296,6 @@ npm run dev
 
 ## Acknowledgments
 
-This work is inspired from VOPRF work on zkemail + semaphore protocol.
-
 This work is inspired from the great vOPRF R&D done by the Privacy Stewards of Ethereum on the [semaphore](https://github.com/semaphore-protocol) protocol and [zkemail](https://github.com/zkemail). Team Fileverse will be collaborating more actively with the [PSE](https://github.com/privacy-ethereum) team on leveraging their advanced work on TLSNotary and more <3
 
 There is no real online collaboration without privacy. There can't be real privacy for online collaboration without zero-knowledge proofs. The Internet is the new home of our Minds. It's where we discover, produce and share information. It's where we meet and coordinate freely with others. Being unrestrained in our ability to access information and people is essential to our freedom and to global understanding and collaboration. Privacy is a cornerstone of Fileverse and all our collaboration apps and middleware. This is why we support [Privacy](https://vitalik.eth.limo/general/2025/04/14/privacy.html).
