@@ -301,4 +301,4 @@ There is no real online collaboration without privacy. There can't be real priva
 
 ## License
 
-GNU GPL
+GNU GPL v3
